@@ -4,8 +4,6 @@ import About from './components/About';
 import Gallery from './components/Gallery';
 import ContactForm from './components/Contact';
 
-const [contactSelected, setContactSelected] = useState(false);
-
 function App() {
   const [categories] = useState([
     {
@@ -19,21 +17,23 @@ function App() {
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
+  const [contactSelected, setContactSelected] = useState(false);
+
   return (
     <div>
-    <Nav
-      categories={categories}
-      setCurrentCategory={setCurrentCategory}
-      currentCategory={currentCategory}
-      contactSelected={contactSelected}
-      setContactSelected={setContactSelected}
-    ></Nav>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
+      ></Nav>
       <main>
         {!contactSelected ? (
-        <>
-          <Gallery currentCategory={currentCategory}></Gallery>
-          <About></About>
-        </>
+          <>
+            <Gallery currentCategory={currentCategory}></Gallery>
+            <About></About>
+          </>
         ) : (
           <ContactForm></ContactForm>
         )}
